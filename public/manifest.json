@@ -1,0 +1,28 @@
+{
+  "name": "AniKotoAPI — Free Anime REST API",
+  "short_name": "AniKotoAPI",
+  "description": "Free anime REST API with 38 endpoints. Search, filter, stream episodes, get rankings. No API key required.",
+  "start_url": "/",
+  "display": "standalone",
+  "id": "/",
+  "scope": "/",
+  "lang": "en",
+  "orientation": "any",
+  "background_color": "#faf9f5",
+  "theme_color": "#faf9f5",
+  "icons": [
+    {
+      "src": "/favicon-origin.png",
+      "sizes": "512x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["developer", "entertainment", "utilities"]
+}

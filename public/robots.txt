@@ -1,0 +1,8 @@
+# AniKotoAPI — https://peachstreamanikototvapi.vercel.app
+User-agent: *
+Allow: /
+Disallow: /api
+Disallow: /privacy
+Disallow: /tos
+
+Sitemap: https://peachstreamanikototvapi.vercel.app/sitemap.xml

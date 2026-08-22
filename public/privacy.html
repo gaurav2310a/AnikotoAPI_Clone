@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Privacy Policy for AniKotoAPI. We do not collect, store, or share personal data." />
+  <meta property="og:title" content="Privacy Policy — AniKotoAPI" />
+  <meta property="og:description" content="Privacy Policy for AniKotoAPI. We do not collect, store, or share personal data." />
+  <meta property="og:image" content="https://peachstreamanikototvapi.vercel.app/share.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — AniKotoAPI</title>
+  <meta name="theme-color" content="#faf9f5" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --canvas:#faf9f5;--surface-card:#efe9de;--hairline:#e6dfd8;
+      --ink:#141413;--body:#3d3d3a;--muted:#6c6a64;--muted-soft:#8e8b82;
+      --primary:#cc785c;--primary-active:#a9583e;
+      --surface-dark:#181715;--on-dark:#faf9f5;--on-dark-soft:#a09d96;
+      --font-display:'Cormorant Garamond',Garamond,'Times New Roman',serif;
+      --font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+      --font-code:'JetBrains Mono',monospace;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font-body);background:var(--canvas);color:var(--body);line-height:1.8}
+    header{position:sticky;top:0;z-index:100;background:var(--canvas);border-bottom:1px solid var(--hairline);padding:0 24px}
+    .header-inner{max-width:720px;margin:0 auto;display:flex;align-items:center;height:64px}
+    .logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink)}
+    .logo-mark{font-family:var(--font-display);font-size:1.2rem;font-weight:600;letter-spacing:-.02em}
+    .logo-mark span{color:var(--primary)}
+    .content{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:60px 24px 80px}
+    h1{font-family:var(--font-display);font-size:2.2rem;font-weight:400;letter-spacing:-.02em;margin-bottom:8px;color:var(--ink)}
+    .updated{color:var(--muted-soft);font-size:.82rem;margin-bottom:40px;font-family:var(--font-code)}
+    h2{font-family:var(--font-display);font-size:1.2rem;font-weight:500;margin:32px 0 12px;padding-top:16px;border-top:1px solid var(--hairline);color:var(--ink)}
+    h2:first-of-type{border-top:none;padding-top:0}
+    p{color:var(--body);font-size:.92rem;margin-bottom:16px}
+    ul{color:var(--body);font-size:.92rem;margin:0 0 16px 20px}
+    li{margin-bottom:6px}
+    code{font-family:var(--font-code);font-size:.82rem;background:rgba(204,120,92,.08);color:var(--primary);padding:2px 6px;border-radius:4px}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{text-decoration:underline}
+    strong{color:var(--ink)}
+    footer{position:relative;z-index:1;border-top:1px solid var(--hairline);padding:24px;text-align:center;color:var(--muted-soft);font-size:.75rem}
+    footer a{color:var(--primary)}
+  </style>
+</head>
+<body>
+  <header><div class="header-inner"><a href="/" class="logo"><span class="logo-mark"><span>*</span> AniKotoAPI</span></a></div></header>
+  <div class="content">
+    <h1>Privacy Policy</h1>
+    <div class="updated">Last updated: 2026-06-08</div>
+
+    <h2>1. Overview</h2>
+    <p>AniKotoAPI ("the Service") is a free, open-source REST API that provides anime data by scraping publicly available information from anikototv.to and related domains. This Privacy Policy explains how we handle data when you use the Service.</p>
+
+    <h2>2. Data We Collect</h2>
+    <p>The Service is designed to be <strong>stateless and privacy-preserving</strong>. We do not collect, store, or process any personal data from API consumers.</p>
+    <ul>
+      <li><strong>No user accounts</strong> — The API requires no authentication, registration, or API keys.</li>
+      <li><strong>No cookies</strong> — We do not set tracking cookies on API responses.</li>
+      <li><strong>No analytics</strong> — We do not use Google Analytics, Mixpanel, or any third-party analytics on API endpoints.</li>
+      <li><strong>No logging of personal data</strong> — Server logs may contain IP addresses and request paths (standard Vercel/Node.js behavior), but these are not stored, sold, or shared.</li>
+    </ul>
+
+    <h2>3. Third-Party Data Sources</h2>
+    <p>The Service scrapes data from <code>anikototv.to</code> and related domains. This data (anime titles, descriptions, images, episode information) belongs to the respective content owners. We do not claim ownership of this data.</p>
+    <p>If you are a content owner and wish to have your data removed from this API, please open an issue on our <a href="https://github.com/gaurav2310a/AnikotoAPI_Clone" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>
+
+    <h2>4. Data Storage</h2>
+    <p>The Service uses a simple in-memory cache (5-minute TTL) to reduce repeated scraping. This cache is:</p>
+    <ul>
+      <li>Purely temporary and reset on every server restart</li>
+      <li>Not persisted to any database</li>
+      <li>Not associated with any user identity</li>
+    </ul>
+
+    <h2>5. Data Sharing</h2>
+    <p>We do not sell, trade, or share any data with third parties. The API is provided as-is for educational and development purposes.</p>
+
+    <h2>6. Children's Privacy</h2>
+    <p>The Service is not directed at children under 13. We do not knowingly collect information from children under 13.</p>
+
+    <h2>7. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date.</p>
+
+    <h2>8. Contact</h2>
+    <p>For questions about this Privacy Policy, open an issue at <a href="https://github.com/gaurav2310a/AnikotoAPI_Clone/issues" target="_blank" rel="noopener noreferrer">github.com/gaurav2310a/AniKotoAPI/issues</a>.</p>
+  </div>
+  <footer>&copy; 2026 AniKotoAPI &middot; <a href="/">Home</a> &middot; <a href="/tos">Terms</a></footer>
+</body>
+</html>

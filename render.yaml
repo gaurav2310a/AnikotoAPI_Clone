@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: AniKotoAPI
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: https://anikototv.to,https://anikoto.cz,https://anikoto.me,https://anikoto.net,https://anikoto.se
