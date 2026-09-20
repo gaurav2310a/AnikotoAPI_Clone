@@ -123,23 +123,20 @@ const requestCounts = new Map();
 const RATE_LIMIT = parseInt(process.env.RATE_LIMIT) || 100;
 const RATE_WINDOW = parseInt(process.env.RATE_WINDOW) || 60000;
 
-// ---- FEATURE: Rate limiter cleanup interval (every 5 minutes) ----
-const RATE_CLEANUP_INTERVAL = 300000;
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, timestamps] of requestCounts.entries()) {
-    const validTimestamps = timestamps.filter(t => now - t < RATE_WINDOW);
-    if (validTimestamps.length === 0) {
-      requestCounts.delete(ip);
-    } else {
-      requestCounts.set(ip, validTimestamps);
-    }
-  }
-}, RATE_CLEANUP_INTERVAL);
-
+// Cloudflare Workers do not allow timers during module initialization.
+// Stale entries are pruned lazily when a request arrives instead.
 app.use((req, res, next) => {
-  const ip = req.ip || req.connection.remoteAddress;
+  const ip = req.ip || req.connection?.remoteAddress || "unknown";
   const now = Date.now();
+
+  // Lazy cleanup: remove expired timestamps for the current IP.
+  const existing = requestCounts.get(ip);
+  if (existing) {
+    const valid = existing.filter(t => now - t < RATE_WINDOW);
+    if (valid.length === 0) requestCounts.delete(ip);
+    else requestCounts.set(ip, valid);
+  }
+
   if (!requestCounts.has(ip)) {
     requestCounts.set(ip, []);
   }
