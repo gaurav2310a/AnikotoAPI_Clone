@@ -1,7 +1,7 @@
 ```
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║  AniKotoAPI — Streaming Guide                                              ║
-║  Base URL: https://peachstreamanikototvapi.vercel.app/api                             ║
+║  Base URL: https://anikotoapi-clone.stacknt.workers.dev/api                             ║
 ║  Free REST API scraping anime data from anikototv.to                        ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 ```
@@ -120,7 +120,7 @@ FLARESOLVERR_URL=http://your-flaresolverr-host:8191
 Use the anime's ID or slug to get the episode list.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/one-piece"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/one-piece"
 ```
 
 **Response:**
@@ -160,7 +160,7 @@ echo "MTExODg6MTExOTQ=" | base64 -d
 Pass the decoded `server_ids` to `/servers`.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=11188:11194"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=11188:11194"
 ```
 
 **Response:**
@@ -202,7 +202,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=11188:11194"
 Use the `link_id` from the chosen server.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=23001"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=23001"
 ```
 
 **Response:**
@@ -227,7 +227,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=23001"
 This is the critical step. Call `/stream/resolve` with the `link_id`.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=23001&slug=one-piece"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=23001&slug=one-piece"
 ```
 
 **Response:**
@@ -256,7 +256,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=23001&
 If the stream is HLS, query available quality levels.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/qualities?url=https://vidtube.site/hls/abc123/master.m3u8"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/qualities?url=https://vidtube.site/hls/abc123/master.m3u8"
 ```
 
 **Response:**
@@ -281,10 +281,10 @@ If the upstream CDN blocks browser CORS requests, route the stream through the p
 
 ```bash
 # Proxy the M3U8 playlist
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=https://vidtube.site/hls/abc123/master.m3u8"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=https://vidtube.site/hls/abc123/master.m3u8"
 
 # Proxy individual TS segments (HLS player will call this automatically when proxied)
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=https://vidtube.site/hls/abc123/segment_001.ts"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/ts-proxy?url=https://vidtube.site/hls/abc123/segment_001.ts"
 ```
 
 ### Combined Watch Page (Shortcut)
@@ -292,7 +292,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=http
 For a single-call approach that bundles episode data + servers + recommendations:
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece&ep=1118"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/watch?slug=one-piece&ep=1118"
 ```
 
 **Response:**
@@ -328,7 +328,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece&ep=
 Returns the full episode list with `server_ids` (base64) for each episode.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/demon-slayer"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/demon-slayer"
 ```
 
 ---
@@ -342,7 +342,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/demon-slayer"
 Returns available streaming servers with `link_id` values for each.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=11188:11194"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=11188:11194"
 ```
 
 ---
@@ -356,7 +356,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=11188:11194"
 Returns the embed URL and skip data (intro/outro timestamps).
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=23001"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=23001"
 ```
 
 ---
@@ -371,7 +371,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=23001"
 Resolves the actual stream URL (m3u8 or mp4) and subtitle tracks.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=23001&slug=one-piece"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=23001&slug=one-piece"
 ```
 
 ---
@@ -385,7 +385,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=23001&
 Returns all available quality levels for the given HLS playlist.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/qualities?url=https%3A%2F%2Fvidtube.site%2Fhls%2Fabc123%2Fmaster.m3u8"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/qualities?url=https%3A%2F%2Fvidtube.site%2Fhls%2Fabc123%2Fmaster.m3u8"
 ```
 
 ---
@@ -401,16 +401,16 @@ Returns rewritten M3U8 content with `Content-Type: application/vnd.apple.mpegurl
 **Allowed domains:** `vidtube.site`, `vidplay.site`, `megaplay.buzz`, `megaplay-1.buzz`, `cdn.anipixcdn.co`
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=https://vidtube.site/hls/abc123/master.m3u8"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=https://vidtube.site/hls/abc123/master.m3u8"
 ```
 
 **Rewritten output example:**
 ```
 #EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=800000,RESOLUTION=640x360
-https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=https%3A%2F%2Fvidtube.site%2Fhls%2Fabc123%2F360p.m3u8
+https://anikotoapi-clone.stacknt.workers.dev/api/stream/ts-proxy?url=https%3A%2F%2Fvidtube.site%2Fhls%2Fabc123%2F360p.m3u8
 #EXT-X-STREAM-INF:BANDWIDTH=1400000,RESOLUTION=854x480
-https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=https%3A%2F%2Fvidtube.site%2Fhls%2Fabc123%2F480p.m3u8
+https://anikotoapi-clone.stacknt.workers.dev/api/stream/ts-proxy?url=https%3A%2F%2Fvidtube.site%2Fhls%2Fabc123%2F480p.m3u8
 ```
 
 > The proxy rewrites all internal URLs to route through `/stream/ts-proxy`, so every TS segment fetch also goes through the proxy — fully CORS-free.
@@ -426,7 +426,7 @@ https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=https%3A%2F%2
 Returns binary TS video data with `Content-Type: video/mp2t`.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=https://vidtube.site/hls/abc123/segment_001.ts" --output segment.ts
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/ts-proxy?url=https://vidtube.site/hls/abc123/segment_001.ts" --output segment.ts
 ```
 
 ---
@@ -441,7 +441,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=http
 Single-call endpoint returning episode data, available servers, trending sidebar, and recommendations.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece&ep=1118"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/watch?slug=one-piece&ep=1118"
 ```
 
 ---
@@ -456,7 +456,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece&ep=
 Returns download links for the specified episode.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/download?slug=one-piece&ep=1118"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/download?slug=one-piece&ep=1118"
 ```
 
 **Response:**
@@ -486,7 +486,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/download?slug=one-piece&
 Cross-server mapping for resolving servers across different backends.
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/mapper-servers?malId=21&slug=one-piece&timestamp=1722403200"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/mapper-servers?malId=21&slug=one-piece&timestamp=1722403200"
 ```
 
 ---
@@ -547,7 +547,7 @@ Requests with URLs from other domains will be rejected.
 const streamUrl = "https://vidtube.site/hls/abc123/master.m3u8";
 
 // Build the proxied URL
-const proxyUrl = `https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
+const proxyUrl = `https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
 
 // Use this in your HLS player
 const hls = new Hls();
@@ -581,7 +581,7 @@ hls.attachMedia(videoElement);
     const streamUrl = 'https://vidtube.site/hls/abc123/master.m3u8';
 
     // Use the proxy for CORS-free playback
-    const proxyUrl = `https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
+    const proxyUrl = `https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
 
     if (Hls.isSupported()) {
       const hls = new Hls({
@@ -654,7 +654,7 @@ hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
 
     // Set the proxied HLS source
     const streamUrl = 'https://vidtube.site/hls/abc123/master.m3u8';
-    const proxyUrl = `https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
+    const proxyUrl = `https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
 
     player.source = {
       type: 'video',
@@ -724,7 +724,7 @@ hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
 
   <script>
     const streamUrl = 'https://vidtube.site/hls/abc123/master.m3u8';
-    const proxyUrl = `https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
+    const proxyUrl = `https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
 
     const player = videojs('my-video', {
       html5: {
@@ -804,7 +804,7 @@ MP4 files typically have CORS enabled, so no proxy is needed.
 async function fetchStream(slug, episode) {
   try {
     // Step 1: Get episodes
-    const epRes = await fetch(`https://peachstreamanikototvapi.vercel.app/api/episodes/${slug}`);
+    const epRes = await fetch(`https://anikotoapi-clone.stacknt.workers.dev/api/episodes/${slug}`);
     if (!epRes.ok) throw new Error(`Episodes fetch failed: ${epRes.status}`);
     const epData = await epRes.json();
 
@@ -813,7 +813,7 @@ async function fetchStream(slug, episode) {
 
     // Step 2: Decode server_ids and fetch servers
     const decodedIds = atob(episodeEntry.server_ids);
-    const srvRes = await fetch(`https://peachstreamanikototvapi.vercel.app/api/servers?ids=${decodedIds}`);
+    const srvRes = await fetch(`https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=${decodedIds}`);
     if (!srvRes.ok) throw new Error(`Servers fetch failed: ${srvRes.status}`);
     const srvData = await srvRes.json();
 
@@ -822,7 +822,7 @@ async function fetchStream(slug, episode) {
 
     // Step 3: Resolve stream
     const streamRes = await fetch(
-      `https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=${firstServer.link_id}&slug=${slug}`
+      `https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=${firstServer.link_id}&slug=${slug}`
     );
     if (!streamRes.ok) throw new Error(`Stream resolve failed: ${streamRes.status}`);
     const streamData = await streamRes.json();
@@ -865,13 +865,13 @@ async function playWithFallback(servers, slug, videoEl) {
   for (const server of servers) {
     try {
       const res = await fetch(
-        `https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=${server.link_id}&slug=${slug}`
+        `https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=${server.link_id}&slug=${slug}`
       );
       const data = await res.json();
       const streamUrl = data.results.url;
 
       if (data.results.type === 'hls') {
-        const proxyUrl = `https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
+        const proxyUrl = `https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`;
         const hls = new Hls();
         hls.loadSource(proxyUrl);
         hls.attachMedia(videoEl);
@@ -923,7 +923,7 @@ async function playWithFallback(servers, slug, videoEl) {
 ```
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║  End of Streaming Guide                                                     ║
-║  AniKotoAPI — https://peachstreamanikototvapi.vercel.app/api                           ║
+║  AniKotoAPI — https://anikotoapi-clone.stacknt.workers.dev/api                           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 ```
 

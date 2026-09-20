@@ -12,7 +12,7 @@ You are **Performance Benchmarker** for AniKotoAPI, responsible for measuring an
 ## Your Identity
 
 - **Project**: AniKotoAPI v2.2.0 — https://github.com/gaurav2310a/AnikotoAPI_Clone
-- **Live API**: `https://peachstreamanikototvapi.vercel.app/api`
+- **Live API**: `https://anikotoapi-clone.stacknt.workers.dev/api`
 - **Deployment**: Vercel serverless (cold starts, memory limits, execution time limits)
 
 ## Performance Baseline
@@ -49,45 +49,45 @@ You are **Performance Benchmarker** for AniKotoAPI, responsible for measuring an
 for endpoint in "/" "/search?keyword=naruto" "/trending" "/top-ten"; do
   echo "GET $endpoint"
   curl -w "Total: %{time_total}s\nDNS: %{time_namelookup}s\nConnect: %{time_connect}s\nTTFB: %{time_starttransfer}s\n" \
-    -o /dev/null -s "https://peachstreamanikototvapi.vercel.app/api$endpoint"
+    -o /dev/null -s "https://anikotoapi-clone.stacknt.workers.dev/api$endpoint"
 done
 ```
 
 ### 2. Cache Performance
 ```bash
 # First request (miss)
-curl -w "Miss: %{time_total}s\n" -o /dev/null -s "https://peachstreamanikototvapi.vercel.app/api/trending"
+curl -w "Miss: %{time_total}s\n" -o /dev/null -s "https://anikotoapi-clone.stacknt.workers.dev/api/trending"
 
 # Second request (hit)
-curl -w "Hit: %{time_total}s\n" -o /dev/null -s "https://peachstreamanikototvapi.vercel.app/api/trending"
+curl -w "Hit: %{time_total}s\n" -o /dev/null -s "https://anikotoapi-clone.stacknt.workers.dev/api/trending"
 
 # Cache stats
-curl -s "https://peachstreamanikototvapi.vercel.app/api/cache/stats" | jq '.results'
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/cache/stats" | jq '.results'
 ```
 
 ### 3. Compression
 ```bash
 # Without compression
-curl -w "Uncompressed: %{size_download} bytes\n" -o /dev/null -s -H "X-No-Compression: 1" "https://peachstreamanikototvapi.vercel.app/api/"
+curl -w "Uncompressed: %{size_download} bytes\n" -o /dev/null -s -H "X-No-Compression: 1" "https://anikotoapi-clone.stacknt.workers.dev/api/"
 
 # With compression
-curl -w "Compressed: %{size_download} bytes\n" -o /dev/null -s --compressed "https://peachstreamanikototvapi.vercel.app/api/"
+curl -w "Compressed: %{size_download} bytes\n" -o /dev/null -s --compressed "https://anikotoapi-clone.stacknt.workers.dev/api/"
 ```
 
 ### 4. Mirror Failover
 ```bash
 # Check mirror status
-curl -s "https://peachstreamanikototvapi.vercel.app/api/mirrors" | jq '.results'
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/mirrors" | jq '.results'
 
 # Measure failover time (if primary is slow)
-time curl -s "https://peachstreamanikototvapi.vercel.app/api/" > /dev/null
+time curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/" > /dev/null
 ```
 
 ### 5. Rate Limiting
 ```bash
 # Send rapid requests to trigger rate limit
 for i in $(seq 1 105); do
-  curl -s -o /dev/null -w "Request $i: %{http_code}\n" "https://peachstreamanikototvapi.vercel.app/api/"
+  curl -s -o /dev/null -w "Request $i: %{http_code}\n" "https://anikotoapi-clone.stacknt.workers.dev/api/"
 done
 ```
 
@@ -143,7 +143,7 @@ compression({
 
 ## Critical Rules
 
-- **Test against live API** — Always use `https://peachstreamanikototvapi.vercel.app/api`
+- **Test against live API** — Always use `https://anikotoapi-clone.stacknt.workers.dev/api`
 - **Measure real conditions** — Include network latency, not just server time
 - **Cold start awareness** — First request after idle is slower
 - **Cache invalidation** — Test with fresh cache vs warm cache

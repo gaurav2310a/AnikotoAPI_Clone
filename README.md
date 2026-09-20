@@ -469,7 +469,7 @@ The `vercel.json` file handles:
 
 ### Base URL
 ```
-https://peachstreamanikototvapi.vercel.app/api
+https://anikotoapi-clone.stacknt.workers.dev/api
 ```
 
 ### Streaming Flow
@@ -478,13 +478,13 @@ To get a stream URL, follow these 3 steps:
 
 ```bash
 # Step 1: Get episodes by animeId (returns server_ids)
-curl "https://peachstreamanikototvapi.vercel.app/api/episodes/958"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/958"
 
 # Step 2: Get servers (pass server_ids from Step 1)
-curl "https://peachstreamanikototvapi.vercel.app/api/servers?ids=dXNCT3hNQzk3THhSTW8ySnM5..."
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=dXNCT3hNQzk3THhSTW8ySnM5..."
 
 # Step 3: Get stream URL (pass link_id from Step 2)
-curl "https://peachstreamanikototvapi.vercel.app/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
 ```
 
 ### Stream URL Resolution
@@ -493,13 +493,13 @@ The `/api/stream` endpoint returns an embed URL. To get the actual video URL (m3
 
 ```bash
 # Resolve embed URL to actual stream URL
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
 
 # Get quality options from an M3U8 playlist
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/qualities?url=https://example.com/playlist.m3u8"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/qualities?url=https://example.com/playlist.m3u8"
 
 # Proxy M3U8 playlist (rewrites URLs for CORS-free playback)
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=https://example.com/playlist.m3u8"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=https://example.com/playlist.m3u8"
 ```
 
 ### Dub & Sub Switch
@@ -548,12 +548,12 @@ const stream = await fetch(`/api/stream?id=${dubServer.link_id}`).then(r => r.js
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/");
 console.log(resp.data);
 ```
 
@@ -600,12 +600,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/top-ten"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/top-ten"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/top-ten");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/top-ten");
 console.log(resp.data);
 ```
 
@@ -654,12 +654,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/search?keyword=one+piece"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/search?keyword=one+piece"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/search", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/search", {
   params: { keyword: "one piece", page: 1 }
 });
 console.log(resp.data);
@@ -700,12 +700,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/info?id=one-piece-odmau"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/info?id=one-piece-odmau"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/info", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/info", {
   params: { id: "one-piece-odmau" }
 });
 console.log(resp.data);
@@ -758,12 +758,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/random"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/random"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/random");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/random");
 console.log(resp.data);
 ```
 
@@ -806,12 +806,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/schedule?date=2026-06-08"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/schedule?date=2026-06-08"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/schedule", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/schedule", {
   params: { date: "2026-06-08" }
 });
 console.log(resp.data);
@@ -855,12 +855,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/episodes/958"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/958"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/episodes/958");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/episodes/958");
 console.log(resp.data);
 ```
 
@@ -898,12 +898,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece-odmau&ep=1165"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/watch?slug=one-piece-odmau&ep=1165"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/watch", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/watch", {
   params: { slug: "one-piece-odmau", ep: 1165 }
 });
 console.log(resp.data);
@@ -968,12 +968,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/servers?ids={server_ids}"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids={server_ids}"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/servers", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/servers", {
   params: { ids: "yourServerIds" }
 });
 console.log(resp.data);
@@ -1026,12 +1026,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/mapper-servers?malId=21&slug=one-piece&timestamp=1717900000"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/mapper-servers?malId=21&slug=one-piece&timestamp=1717900000"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/mapper-servers", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/mapper-servers", {
   params: { malId: 21, slug: "one-piece", timestamp: 1717900000 }
 });
 console.log(resp.data);
@@ -1070,12 +1070,12 @@ Server list for an episode — returns available streaming servers with their na
 | `ids` | `string` | **required** | `server_ids` from `/episodes` response (base64-encoded) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/servers?ids={server_ids}"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids={server_ids}"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/servers", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/servers", {
   params: { ids: "yourServerIds" }
 });
 console.log(resp.data);
@@ -1122,12 +1122,12 @@ Mapper API — fetches additional streaming servers from gogoanime/anivibe via t
 | `timestamp` | `number` | **required** | Current timestamp |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/mapper-servers?malId=21&slug=one-piece&timestamp=1717900000"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/mapper-servers?malId=21&slug=one-piece&timestamp=1717900000"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/mapper-servers", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/mapper-servers", {
   params: { malId: 21, slug: "one-piece", timestamp: 1717900000 }
 });
 console.log(resp.data);
@@ -1168,12 +1168,12 @@ Get streaming URL for a server. Pass the `link_id` from `/api/servers` response.
 | `id` | `string` | **required** | `link_id` from `/servers` response (lowercase `id` required) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/stream", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/stream", {
   params: { id: "yourLinkId" }
 });
 console.log(resp.data);
@@ -1204,12 +1204,12 @@ console.log(resp.data);
 Top 10 anime rankings for day, week, and month.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/top-ten"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/top-ten"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/top-ten");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/top-ten");
 console.log(resp.data);
 ```
 
@@ -1257,12 +1257,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/spotlight"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/spotlight"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/spotlight");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/spotlight");
 console.log(resp.data);
 ```
 
@@ -1323,12 +1323,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/trending"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/trending"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/trending");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/trending");
 console.log(resp.data);
 ```
 
@@ -1391,12 +1391,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/most-popular?page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/most-popular?page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/most-popular", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/most-popular", {
   params: { page: 1 }
 });
 console.log(resp.data);
@@ -1470,12 +1470,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/new-release?page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/new-release?page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/new-release", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/new-release", {
   params: { page: 1 }
 });
 console.log(resp.data);
@@ -1516,12 +1516,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/newly-added?page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/newly-added?page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/newly-added", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/newly-added", {
   params: { page: 1 }
 });
 console.log(resp.data);
@@ -1560,12 +1560,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/trending-sidebar"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/trending-sidebar"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/trending-sidebar");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/trending-sidebar");
 console.log(resp.data);
 ```
 
@@ -1619,12 +1619,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/genre/action?page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/genre/action?page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/genre/action", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/genre/action", {
   params: { page: 1 }
 });
 console.log(resp.data);
@@ -1664,12 +1664,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/type/movie?page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/type/movie?page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/type/movie", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/type/movie", {
   params: { page: 1 }
 });
 console.log(resp.data);
@@ -1722,12 +1722,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/status/currently-airing?page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/status/currently-airing?page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/status/currently-airing", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/status/currently-airing", {
   params: { page: 1 }
 });
 console.log(resp.data);
@@ -1779,12 +1779,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/az-list/a?page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/az-list/a?page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/az-list/a", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/az-list/a", {
   params: { page: 1 }
 });
 console.log(resp.data);
@@ -1841,12 +1841,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/filter?genre=action&type=tv&page=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/filter?genre=action&type=tv&page=1"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/filter", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/filter", {
   params: { genre: "action", type: "tv", page: 1 }
 });
 console.log(resp.data);
@@ -1887,12 +1887,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=naruto"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/suggestions?keyword=naruto"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/suggestions", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/suggestions", {
   params: { keyword: "naruto" }
 });
 console.log(resp.data);
@@ -1930,12 +1930,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/latest-updated"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/latest-updated"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/latest-updated");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/latest-updated");
 console.log(resp.data);
 ```
 
@@ -1958,12 +1958,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/seasons/1642"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/seasons/1642"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/seasons/1642");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/seasons/1642");
 console.log(resp.data);
 ```
 
@@ -1986,12 +1986,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/watch-order/1642"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/watch-order/1642"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/watch-order/1642");
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/watch-order/1642");
 console.log(resp.data);
 ```
 
@@ -2015,12 +2015,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/download?slug=one-piece-odmau&ep=1165"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/download?slug=one-piece-odmau&ep=1165"
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/download", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/download", {
   params: { slug: "one-piece-odmau", ep: 1165 }
 });
 console.log(resp.data);
@@ -2046,12 +2046,12 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
 ```
 
 ```javascript
 import axios from "axios";
-const resp = await axios.get("https://peachstreamanikototvapi.vercel.app/api/stream/resolve", {
+const resp = await axios.get("https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve", {
   params: { id: "yourLinkId" }
 });
 console.log(resp.data);
@@ -2090,7 +2090,7 @@ console.log(resp.data);
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/qualities?url=https://example.com/playlist.m3u8"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/qualities?url=https://example.com/playlist.m3u8"
 ```
 
 #### Sample Response
@@ -2129,12 +2129,12 @@ Rewrites relative URLs inside an M3U8 playlist to proxy through the API, adding 
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=https://example.com/playlist.m3u8"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=https://example.com/playlist.m3u8"
 ```
 
 #### Sample Response
 
-Raw M3U8 content with URLs rewritten to `https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=...` and `https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=...` for `.ts` segments.
+Raw M3U8 content with URLs rewritten to `https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=...` and `https://anikotoapi-clone.stacknt.workers.dev/api/stream/ts-proxy?url=...` for `.ts` segments.
 
 ---
 
@@ -2157,7 +2157,7 @@ Proxies `.ts` video segments with proper `Content-Type: video/mp2t` and CORS hea
 #### Example of request
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=https://example.com/segment.ts"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/ts-proxy?url=https://example.com/segment.ts"
 ```
 
 #### Sample Response
@@ -2345,7 +2345,7 @@ CMD ["node", "server.js"]
 |:---|:---|:---|
 | **2.2.0** | 2026-07-28 | Streaming resolver, M3U8/TS proxy, 5 new endpoints, bug fixes, full diagnostic sweep |
 | **1.7.2** | 2026-06-08 | Full rebrand AniKotoAPI → AniKotoAPI, docs folder with real data, streaming fix |
-| **1.7.1** | 2026-06-08 | Updated Vercel URL to peachstreamanikototvapi.vercel.app |
+| **1.7.1** | 2026-06-08 | Updated Vercel URL to anikotoapi-clone.stacknt.workers.dev/ |
 | **1.7.0** | 2026-06-08 | Premium landing page with SVG icons, live console, particles, glassmorphism |
 | **1.6.0** | 2026-06-08 | Anti-bot bypass, public files, GitHub repo topics |
 | **1.5.0** | 2026-06-08 | Complete documentation rewrite with AlisaReactionBot style |
@@ -2409,7 +2409,7 @@ Use <code>/api/filter</code> with query params. The <code>keyword</code> param i
 <details>
 <summary><b>📡 Can I use this in my frontend app?</b></summary>
 <br/>
-Yes! CORS is enabled for all origins (<code>*</code>). Just make fetch requests to the API endpoints. No API key needed. Example: <code>fetch('https://peachstreamanikototvapi.vercel.app/api/search?keyword=naruto')</code>
+Yes! CORS is enabled for all origins (<code>*</code>). Just make fetch requests to the API endpoints. No API key needed. Example: <code>fetch('https://anikotoapi-clone.stacknt.workers.dev/api/search?keyword=naruto')</code>
 </details>
 
 <details>

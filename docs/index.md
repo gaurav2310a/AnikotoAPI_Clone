@@ -47,19 +47,19 @@ FLARESOLVERR_URL=http://your-flaresolverr-host:8191
 **Step 1** — Make your first request:
 
 ```bash
-curl https://peachstreamanikototvapi.vercel.app/api/
+curl https://anikotoapi-clone.stacknt.workers.dev/api/
 ```
 
 **Step 2** — Search for an anime:
 
 ```bash
-curl https://peachstreamanikototvapi.vercel.app/api/search?q=naruto
+curl https://anikotoapi-clone.stacknt.workers.dev/api/search?q=naruto
 ```
 
 **Step 3** — Get anime info:
 
 ```bash
-curl https://peachstreamanikototvapi.vercel.app/api/info?link=/anime/naruto
+curl https://anikotoapi-clone.stacknt.workers.dev/api/info?link=/anime/naruto
 ```
 
 That's it. No API keys required.
@@ -232,25 +232,25 @@ AniKotoAPI/
 
 ```bash
 # Get homepage data
-curl https://peachstreamanikototvapi.vercel.app/api/
+curl https://anikotoapi-clone.stacknt.workers.dev/api/
 
 # Search for an anime
-curl "https://peachstreamanikototvapi.vercel.app/api/search?q=one+piece"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/search?q=one+piece"
 
 # Get anime details
-curl "https://peachstreamanikototvapi.vercel.app/api/info?link=/anime/one-piece"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/info?link=/anime/one-piece"
 
 # Get streaming servers
-curl "https://peachstreamanikototvapi.vercel.app/api/servers?link=/one-piece-episode-1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/servers?link=/one-piece-episode-1"
 
 # Get trending anime
-curl https://peachstreamanikototvapi.vercel.app/api/trending
+curl https://anikotoapi-clone.stacknt.workers.dev/api/trending
 ```
 
 ### Using JavaScript (fetch)
 
 ```javascript
-const BASE = "https://peachstreamanikototvapi.vercel.app/api";
+const BASE = "https://anikotoapi-clone.stacknt.workers.dev/api";
 
 // Search
 const res = await fetch(`${BASE}/search?q=naruto`);
@@ -263,7 +263,7 @@ console.log(data.results);
 ```python
 import requests
 
-BASE = "https://peachstreamanikototvapi.vercel.app/api"
+BASE = "https://anikotoapi-clone.stacknt.workers.dev/api"
 
 # Search
 r = requests.get(f"{BASE}/search?q=naruto")
@@ -274,7 +274,7 @@ print(r.json()["results"])
 
 ```javascript
 const axios = require("axios");
-const BASE = "https://peachstreamanikototvapi.vercel.app/api";
+const BASE = "https://anikotoapi-clone.stacknt.workers.dev/api";
 
 async function searchAnime(query) {
   const { data } = await axios.get(`${BASE}/search`, {
@@ -419,10 +419,10 @@ SOFTWARE.
 
 ## // === LINKS ===
 
-- **Live API**: https://peachstreamanikototvapi.vercel.app/api
+- **Live API**: https://anikotoapi-clone.stacknt.workers.dev/api
 - **GitHub**: https://github.com/gaurav2310a/AnikotoAPI_Clone
-- **OpenAPI Spec**: https://peachstreamanikototvapi.vercel.app/api/openapi
-- **Health Check**: https://peachstreamanikototvapi.vercel.app/api/health
+- **OpenAPI Spec**: https://anikotoapi-clone.stacknt.workers.dev/api/openapi
+- **Health Check**: https://anikotoapi-clone.stacknt.workers.dev/api/health
 - **Author**: [Gaurav](https://github.com/gaurav2310a)
 
 ---

@@ -1,8 +1,8 @@
-# AniKotoAPI — https://peachstreamanikototvapi.vercel.app
+# AniKotoAPI — https://anikotoapi-clone.stacknt.workers.dev/
 User-agent: *
 Allow: /
 Disallow: /api
 Disallow: /privacy
 Disallow: /tos
 
-Sitemap: https://peachstreamanikototvapi.vercel.app/sitemap.xml
+Sitemap: https://anikotoapi-clone.stacknt.workers.dev/sitemap.xml

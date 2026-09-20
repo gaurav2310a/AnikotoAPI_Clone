@@ -103,15 +103,15 @@ git remote set-url origin https://github.com/gaurav2310a/AnikotoAPI_Clone.git
 ### Post-Deploy Verification
 ```bash
 # Health check
-curl -s "https://peachstreamanikototvapi.vercel.app/api/health" | jq '.results'
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/health" | jq '.results'
 
 # Stats
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stats" | jq '.results'
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stats" | jq '.results'
 
 # Test a few endpoints
-curl -s "https://peachstreamanikototvapi.vercel.app/api/" | jq '.success'
-curl -s "https://peachstreamanikototvapi.vercel.app/api/search?keyword=naruto" | jq '.success'
-curl -s "https://peachstreamanikototvapi.vercel.app/api/trending" | jq '.success'
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/" | jq '.success'
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/search?keyword=naruto" | jq '.success'
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/trending" | jq '.success'
 ```
 
 ## Vercel Configuration

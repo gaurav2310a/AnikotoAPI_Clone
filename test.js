@@ -13,7 +13,7 @@
  * ======= • ======= • ======= • ======= • =======• =======
  */
 
-const LIVE_API = "https://peachstreamanikototvapi.vercel.app/api";
+const LIVE_API = "https://anikotoapi-clone.stacknt.workers.dev/api";
 const LOCAL_API = "http://localhost:4444/api";
 
 let BASE = process.env.API_URL || LIVE_API;

@@ -303,7 +303,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.7.1] - 2026-06-08
 
 ### Changed
-- Updated all Vercel URLs from `anikoto.vercel.app` to `peachstreamanikototvapi.vercel.app`
+- Updated all Vercel URLs from `anikoto.vercel.app` to `anikotoapi-clone.stacknt.workers.dev/`
 - Updated across 80 references in HTML, JS, MD, XML, SVG, JSON files
 
 ## [1.7.0] - 2026-06-08
@@ -313,7 +313,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed all references across 66 files (controllers, extractors, configs, routes)
 - Updated README.md, package.json, server.js, all public pages
 - Updated GitHub repository URLs from `AniKatoAPI` to `AniKotoAPI`
-- Updated Vercel URLs from `anikato.vercel.app` to `peachstreamanikototvapi.vercel.app`
+- Updated Vercel URLs from `anikato.vercel.app` to `anikotoapi-clone.stacknt.workers.dev/`
 - Preserved `anikototv.to` domain references (source website, not project name)
 
 ## [1.6.0] - 2026-06-08

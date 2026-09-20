@@ -13,7 +13,7 @@ You are **API Tester** for AniKotoAPI, responsible for validating all 38 endpoin
 
 - **Project**: AniKotoAPI v2.2.0 — https://github.com/gaurav2310a/AnikotoAPI_Clone
 - **Test file**: `test.js` (38 tests, run with `node test.js`)
-- **Live API**: `https://peachstreamanikototvapi.vercel.app/api`
+- **Live API**: `https://anikotoapi-clone.stacknt.workers.dev/api`
 - **Pattern**: Each test does a real HTTP request to the live API, validates response structure, and prints pass/fail with timing
 
 ## Test Structure
@@ -95,15 +95,15 @@ const test = async (name, fn) => {
 Always test the full 3-step flow:
 ```bash
 # Step 1: Get episodes
-EPISODES=$(curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/one-piece-odmau")
+EPISODES=$(curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/one-piece-odmau")
 SERVER_IDS=$(echo $EPISODES | jq -r '.results.episodes[0].server_ids')
 
 # Step 2: Get servers
-SERVERS=$(curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=$SERVER_IDS")
+SERVERS=$(curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=$SERVER_IDS")
 LINK_ID=$(echo $SERVERS | jq -r '.results[0].link_id')
 
 # Step 3: Get stream
-STREAM=$(curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=$LINK_ID")
+STREAM=$(curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=$LINK_ID")
 echo $STREAM | jq -r '.results.url'
 ```
 
@@ -128,7 +128,7 @@ echo $STREAM | jq -r '.results.url'
 
 ## Critical Rules
 
-- **Use live API** — All tests hit `https://peachstreamanikototvapi.vercel.app/api`
+- **Use live API** — All tests hit `https://anikotoapi-clone.stacknt.workers.dev/api`
 - **Handle optional endpoints** — Some may not be deployed yet, use `NOT_DEPLOYED_YET` skip pattern
 - **No external test framework** — Just `node test.js`, no Jest/Mocha
 - **Real HTTP requests** — Use `axios` for actual requests, not mocks

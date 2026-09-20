@@ -15,7 +15,7 @@ No external test framework required — just Node.js native `fetch`.
 The test suite automatically detects which API to use:
 
 1. **Local server running** (`localhost:4444`) → uses local
-2. **No local server** → falls back to live API (`peachstreamanikototvapi.vercel.app`)
+2. **No local server** → falls back to live API (`anikotoapi-clone.stacknt.workers.dev/`)
 3. **Manual override** → `API_URL=http://localhost:4444/api node test.js`
 
 ```bash
@@ -28,7 +28,7 @@ node test.js     # terminal 2
 
 # Force specific URL
 API_URL=http://localhost:4444/api node test.js
-API_URL=https://peachstreamanikototvapi.vercel.app/api node test.js
+API_URL=https://anikotoapi-clone.stacknt.workers.dev/api node test.js
 ```
 
 ## What It Tests

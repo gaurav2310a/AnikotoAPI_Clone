@@ -1,6 +1,6 @@
 # API Endpoints Reference
 
-Base URL: `https://peachstreamanikototvapi.vercel.app/api`
+Base URL: `https://anikotoapi-clone.stacknt.workers.dev/api`
 
 ---
 
@@ -131,7 +131,7 @@ Search for anime by keyword.
 **Request:**
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/search?keyword=naruto"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/search?keyword=naruto"
 ```
 
 **Response:**
@@ -175,7 +175,7 @@ Get detailed info about an anime.
 **Request:**
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/info?id=naruto-shippuuden-movie-6-road-to-ninja-w2wqq"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/info?id=naruto-shippuuden-movie-6-road-to-ninja-w2wqq"
 ```
 
 **Response:**
@@ -221,7 +221,7 @@ Get episode list for an anime.
 **Request:**
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/episodes/958"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/958"
 ```
 
 **Response:**
@@ -265,7 +265,7 @@ Get available servers for an episode.
 **Request:**
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/servers?ids=SlNVT25JaFlCMnZOeXZ2aG5takIx..."
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=SlNVT25JaFlCMnZOeXZ2aG5takIx..."
 ```
 
 **Response:**
@@ -311,7 +311,7 @@ Get streaming URL for a server.
 **Request:**
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZrOWdjeldjOERLaWNMMXFNbVB3WUJqOHZGS2FSWVgvbVJraVpIV1dQRjRoN01hOFUvYmxsWXFYNGtiR0h5OWdGQWc9PQ"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZrOWdjeldjOERLaWNMMXFNbVB3WUJqOHZGS2FSWVgvbVJraVpIV1dQRjRoN01hOFUvYmxsWXFYNGtiR0h5OWdGQWc9PQ"
 ```
 
 **Response:**
@@ -345,7 +345,7 @@ Get anime suggestions based on keyword.
 **Request:**
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=naruto"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/suggestions?keyword=naruto"
 ```
 
 **Response:**
@@ -371,7 +371,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=naruto"
 Get spotlight (featured) anime.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/spotlight"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/spotlight"
 ```
 
 Returns array of spotlight anime with posters, descriptions, ratings, and quality info.
@@ -383,7 +383,7 @@ Returns array of spotlight anime with posters, descriptions, ratings, and qualit
 Get currently trending anime.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/trending"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/trending"
 ```
 
 **Response:**
@@ -413,7 +413,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/trending"
 Get top 10 anime for today, this week, and this month.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/top-ten"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/top-ten"
 ```
 
 Returns `{ today: [...], week: [...], month: [...] }`.
@@ -425,7 +425,7 @@ Returns `{ today: [...], week: [...], month: [...] }`.
 Get anime schedule.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/schedule"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/schedule"
 ```
 
 Returns array of scheduled anime with air times.
@@ -437,7 +437,7 @@ Returns array of scheduled anime with air times.
 Get a random anime.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/random"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/random"
 ```
 
 **Response:**
@@ -460,7 +460,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/random"
 Get latest released episodes.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/new-release"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/new-release"
 ```
 
 Returns paginated list of recently released anime episodes.
@@ -472,7 +472,7 @@ Returns paginated list of recently released anime episodes.
 Get most popular anime.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/most-popular"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/most-popular"
 ```
 
 Returns paginated list with `totalPages` and `data` array.
@@ -489,7 +489,7 @@ Get anime by genre.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/genre/action"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/genre/action"
 ```
 
 Returns paginated anime list filtered by genre.
@@ -501,7 +501,7 @@ Returns paginated anime list filtered by genre.
 Get anime by type (TV, OVA, Movie, ONA, etc).
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/type/tv"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/type/tv"
 ```
 
 ---
@@ -511,7 +511,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/type/tv"
 Get anime by status (airing, completed, upcoming).
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/status/completed"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/status/completed"
 ```
 
 ---
@@ -532,7 +532,7 @@ Filter anime with multiple parameters.
 > **Important:** The `keyword` parameter must be present (even empty) or the site returns a 500 error.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/filter?keyword=&genre[]=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/filter?keyword=&genre[]=1"
 ```
 
 Returns filtered and paginated anime list.
@@ -549,7 +549,7 @@ Get full watch page data including servers, trending, and recommended anime.
 | `ep` | number | Yes | Episode number |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece-100&ep=1"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/watch?slug=one-piece-100&ep=1"
 ```
 
 Returns episode data with server list, trending sidebar, and recommended anime.
@@ -565,7 +565,7 @@ Get search autocomplete suggestions.
 | `keyword` | string | Yes | Search keyword |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/search/suggest?keyword=naruto"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/search/suggest?keyword=naruto"
 ```
 
 Returns array of suggestion objects with title, ID, and image.
@@ -581,7 +581,7 @@ Get AJAX-loaded episode list for an anime.
 | `id` | string | Yes | Anime ID or slug |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/episodes-ajax/one-piece-100"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/episodes-ajax/one-piece-100"
 ```
 
 Returns episode list with filters, ranges, and server IDs.
@@ -599,7 +599,7 @@ Get cross-server mapping for gogoanime/anivibe servers.
 | `timestamp` | number | Yes | Timestamp |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/mapper-servers?malId=21&slug=one-piece-100&timestamp=1234567890"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/mapper-servers?malId=21&slug=one-piece-100&timestamp=1234567890"
 ```
 
 Returns mapped server URLs for gogoanime/anivibe.
@@ -615,7 +615,7 @@ Get newly added anime series.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/newly-added"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/newly-added"
 ```
 
 Returns paginated list of newly added anime.
@@ -627,7 +627,7 @@ Returns paginated list of newly added anime.
 Get trending sidebar widget data.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/trending-sidebar"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/trending-sidebar"
 ```
 
 Returns trending anime for sidebar display.
@@ -643,7 +643,7 @@ Get all seasons for an anime (main season, OVAs, movies, specials).
 | `id` | number | Yes | Anime numeric ID |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/seasons/1642"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/seasons/1642"
 ```
 
 Returns all seasons including OVAs, movies, and specials for the anime.
@@ -659,7 +659,7 @@ Get recommended watch order for an anime franchise.
 | `id` | number | Yes | Anime numeric ID |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/watch-order/1642"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/watch-order/1642"
 ```
 
 Returns recommended watch order sequence with relationship types.
@@ -675,7 +675,7 @@ Get recently updated anime sorted by update time.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/latest-updated"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/latest-updated"
 ```
 
 Returns paginated list of recently updated anime.
@@ -692,7 +692,7 @@ Get download links for an anime episode.
 | `ep` | number | Yes | Episode number |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/download?slug=one-piece-odmau&ep=1165"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/download?slug=one-piece-odmau&ep=1165"
 ```
 
 Returns decoded download links for the specified episode.
@@ -709,7 +709,7 @@ Get anime alphabetically by letter.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/az-list/a"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/az-list/a"
 ```
 
 Returns paginated list of anime starting with the specified letter.
@@ -725,7 +725,7 @@ Get upcoming anime sorted by air date.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/upcoming"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/upcoming"
 ```
 
 Returns paginated list of upcoming anime with sub/dub counts, type, and rating.
@@ -742,7 +742,7 @@ Get top-ranked anime with sort options.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/top-rankings?sort=week"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/top-rankings?sort=week"
 ```
 
 **Response:**
@@ -777,7 +777,7 @@ Get recently updated anime. Supports tab filtering.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/recently-updated"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/recently-updated"
 ```
 
 Returns paginated list from `#recent-update` section with client-side tab filtering.
@@ -793,7 +793,7 @@ Get completed anime sorted by score.
 | `page` | number | No | Page number (default: 1) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/completed"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/completed"
 ```
 
 Returns flat array of finished anime.
@@ -812,7 +812,7 @@ Resolve an embed URL to actual video URL (m3u8/mp4).
 | `slug` | string | No | Anime slug (for session cookies) |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZr..."
 ```
 
 Returns resolved URL, type (hls/mp4), server name, and subtitle URLs.
@@ -828,7 +828,7 @@ Parse M3U8 playlist for available quality options.
 | `url` | string | Yes | M3U8 playlist URL |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/qualities?url=https://example.com/playlist.m3u8"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/qualities?url=https://example.com/playlist.m3u8"
 ```
 
 Returns array of quality objects with url, quality label, resolution, bandwidth, and codec.
@@ -844,7 +844,7 @@ M3U8 playlist proxy — rewrites relative URLs to proxy endpoints for CORS-free 
 | `url` | string | Yes | M3U8 playlist URL |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=https://example.com/playlist.m3u8"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=https://example.com/playlist.m3u8"
 ```
 
 Returns rewritten M3U8 content with all `.m3u8` and `.ts` URLs pointing to proxy endpoints.
@@ -860,7 +860,7 @@ TS video segment proxy — serves `.ts` segments with proper Content-Type and CO
 | `url` | string | Yes | `.ts` segment URL |
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stream/ts-proxy?url=https://example.com/segment.ts"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stream/ts-proxy?url=https://example.com/segment.ts"
 ```
 
 Returns binary video segment with `Content-Type: video/mp2t` and `Access-Control-Allow-Origin: *`.
@@ -874,7 +874,7 @@ Returns binary video segment with `Content-Type: video/mp2t` and `Access-Control
 Health check endpoint. No parameters required.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/health"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/health"
 ```
 
 **Response:**
@@ -904,7 +904,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/health"
 API statistics endpoint. No parameters required.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/stats"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/stats"
 ```
 
 **Response:**
@@ -937,7 +937,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/stats"
 Cache statistics endpoint. No parameters required.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/cache/stats"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/cache/stats"
 ```
 
 **Response:**
@@ -963,7 +963,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/cache/stats"
 Mirror status endpoint. No parameters required.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/mirrors"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/mirrors"
 ```
 
 **Response:**
@@ -999,7 +999,7 @@ curl "https://peachstreamanikototvapi.vercel.app/api/mirrors"
 Reset mirror cache. No parameters required.
 
 ```bash
-curl -X POST "https://peachstreamanikototvapi.vercel.app/api/mirrors/reset"
+curl -X POST "https://anikotoapi-clone.stacknt.workers.dev/api/mirrors/reset"
 ```
 
 **Response:**
@@ -1018,7 +1018,7 @@ curl -X POST "https://peachstreamanikototvapi.vercel.app/api/mirrors/reset"
 OpenAPI 3.0.3 specification. No parameters required.
 
 ```bash
-curl "https://peachstreamanikototvapi.vercel.app/api/openapi"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/openapi"
 ```
 
 Returns the full OpenAPI spec document with all endpoint definitions, tags, and server information.

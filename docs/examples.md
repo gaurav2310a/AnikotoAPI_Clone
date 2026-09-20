@@ -1,7 +1,7 @@
 # Code Examples
 
 > **AniKotoAPI** — Complete code examples in cURL, JavaScript, Python, Node.js, and HTML/JS player integrations.
-> All examples are tested and working with the live API at `https://peachstreamanikototvapi.vercel.app/api`.
+> All examples are tested and working with the live API at `https://anikotoapi-clone.stacknt.workers.dev/api`.
 
 ---
 
@@ -16,7 +16,7 @@
 ### Health Check
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/health" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/health" | python3 -m json.tool
 ```
 
 **Expected Output:**
@@ -43,7 +43,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/health" | python3 -m jso
 ### Homepage
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api" | python3 -m json.tool
 ```
 
 ---
@@ -52,7 +52,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api" | python3 -m json.tool
 
 ```bash
 # Search for "naruto" — returns Road of Naruto, Naruto: Shippuuden Movie 6, The Last: Naruto the Movie, etc.
-curl -s "https://peachstreamanikototvapi.vercel.app/api/search?keyword=naruto" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/search?keyword=naruto" | python3 -m json.tool
 ```
 
 **Expected Output (partial):**
@@ -104,7 +104,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/search?keyword=naruto" |
 
 ```bash
 # Get full info for "Naruto: Shippuuden Movie 6: Road to Ninja"
-curl -s "https://peachstreamanikototvapi.vercel.app/api/info?id=naruto-shippuuden-movie-6-road-to-ninja-w2wqq" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/info?id=naruto-shippuuden-movie-6-road-to-ninja-w2wqq" | python3 -m json.tool
 ```
 
 **Expected Output:**
@@ -141,7 +141,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/info?id=naruto-shippuude
 
 ```bash
 # Get episode list for animeId 21 (22 episodes, first ep ID "302")
-curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/21" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/21" | python3 -m json.tool
 ```
 
 **Expected Output (partial):**
@@ -178,11 +178,11 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/21" | python3 -
 
 ```bash
 # Step 1: Get server_ids from episodes
-SERVER_IDS=$(curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/21" \
+SERVER_IDS=$(curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/21" \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['results']['episodes'][0]['server_ids'])")
 
 # Step 2: Get servers using that server_ids
-curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=$SERVER_IDS" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=$SERVER_IDS" | python3 -m json.tool
 ```
 
 **Expected Output:**
@@ -229,7 +229,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=$SERVER_IDS"
 # Get stream URL from a link_id
 LINK_ID="MTF1dkFtaW9BRTZPbzJJRElFZUZrOWdjeldjOERLaWNMMXFNbVB3WUJqOHZGS2FSWVgvbVJraVpIV1dQRjRoN01hOFUvYmxsWXFYNGtiR0h5OWdGQWc9PQ"
 
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=$LINK_ID" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=$LINK_ID" | python3 -m json.tool
 ```
 
 **Expected Output:**
@@ -256,7 +256,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=$LINK_ID" | py
 
 ```bash
 # Resolve embed URL to actual playable stream URL
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=$LINK_ID" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=$LINK_ID" | python3 -m json.tool
 ```
 
 **Expected Output:**
@@ -279,17 +279,17 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=$LINK_
 
 ```bash
 # Complete pipeline: episodes → servers → stream URL → resolve
-curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/21" \
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/21" \
   | python3 -c "
 import sys, json, urllib.request
 
 data = json.load(sys.stdin)
 server_ids = data['results']['episodes'][0]['server_ids']
 
-servers = json.load(urllib.request.urlopen(f'https://peachstreamanikototvapi.vercel.app/api/servers?ids={server_ids}'))
+servers = json.load(urllib.request.urlopen(f'https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids={server_ids}'))
 link_id = servers['results'][0]['link_id']
 
-stream = json.load(urllib.request.urlopen(f'https://peachstreamanikototvapi.vercel.app/api/stream?id={link_id}'))
+stream = json.load(urllib.request.urlopen(f'https://anikotoapi-clone.stacknt.workers.dev/api/stream?id={link_id}'))
 print('Embed URL:', stream['results']['url'])
 print('Skip intro:', stream['results']['skipData']['intro'])
 "
@@ -301,7 +301,7 @@ print('Skip intro:', stream['results']['skipData']['intro'])
 
 ```bash
 # Get all Action anime
-curl -s "https://peachstreamanikototvapi.vercel.app/api/genre/action?page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/genre/action?page=1" | python3 -m json.tool
 ```
 
 ---
@@ -310,7 +310,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/genre/action?page=1" | p
 
 ```bash
 # Get all Movies
-curl -s "https://peachstreamanikototvapi.vercel.app/api/type/movie?page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/type/movie?page=1" | python3 -m json.tool
 ```
 
 ---
@@ -319,7 +319,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/type/movie?page=1" | pyt
 
 ```bash
 # Get currently airing anime
-curl -s "https://peachstreamanikototvapi.vercel.app/api/status/currently-airing?page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/status/currently-airing?page=1" | python3 -m json.tool
 ```
 
 ---
@@ -328,7 +328,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/status/currently-airing?
 
 ```bash
 # Filter: Action TV anime, currently airing, sorted by score
-curl -s "https://peachstreamanikototvapi.vercel.app/api/filter?keyword=&genre=action&type=tv&status=currently-airing&sort=score&page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/filter?keyword=&genre=action&type=tv&status=currently-airing&sort=score&page=1" | python3 -m json.tool
 ```
 
 > **Important:** The `keyword` param is required by the source site. Pass empty string `""` if not searching.
@@ -338,7 +338,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/filter?keyword=&genre=ac
 ### Get Top 10 (Day/Week/Month)
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/top-ten" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/top-ten" | python3 -m json.tool
 ```
 
 ---
@@ -346,7 +346,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/top-ten" | python3 -m js
 ### Get Trending
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/trending" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/trending" | python3 -m json.tool
 ```
 
 ---
@@ -355,7 +355,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/trending" | python3 -m j
 
 ```bash
 # Returns a random anime — e.g. "Cheating Craft" (animeId 4879)
-curl -s "https://peachstreamanikototvapi.vercel.app/api/random" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/random" | python3 -m json.tool
 ```
 
 **Expected Output:**
@@ -382,7 +382,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/random" | python3 -m jso
 ### Search Suggestions (autocomplete)
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=naruto" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/suggestions?keyword=naruto" | python3 -m json.tool
 ```
 
 ---
@@ -391,7 +391,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=naru
 
 ```bash
 # Browse anime starting with "A"
-curl -s "https://peachstreamanikototvapi.vercel.app/api/az-list/a?page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/az-list/a?page=1" | python3 -m json.tool
 ```
 
 ---
@@ -399,7 +399,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/az-list/a?page=1" | pyth
 ### Most Popular
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/most-popular?page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/most-popular?page=1" | python3 -m json.tool
 ```
 
 ---
@@ -407,7 +407,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/most-popular?page=1" | p
 ### New Releases
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/new-release?page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/new-release?page=1" | python3 -m json.tool
 ```
 
 ---
@@ -415,7 +415,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/new-release?page=1" | py
 ### Watch Page
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece-odmau&ep=1165" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/watch?slug=one-piece-odmau&ep=1165" | python3 -m json.tool
 ```
 
 ---
@@ -424,7 +424,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/watch?slug=one-piece-odm
 
 ```bash
 # Rewrite an M3U8 playlist so all URLs go through the API proxy
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=https://example.com/playlist.m3u8"
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=https://example.com/playlist.m3u8"
 ```
 
 > **Tip:** Use this endpoint with HLS.js to avoid CORS issues in the browser.
@@ -444,7 +444,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=https:/
 ```javascript
 async function searchAnime(keyword) {
   const res = await fetch(
-    `https://peachstreamanikototvapi.vercel.app/api/search?keyword=${encodeURIComponent(keyword)}`
+    `https://anikotoapi-clone.stacknt.workers.dev/api/search?keyword=${encodeURIComponent(keyword)}`
   );
   const data = await res.json();
 
@@ -486,7 +486,7 @@ searchAnime('naruto');
 
 ```javascript
 async function getStreamUrl(animeId, episodeNumber = 1) {
-  const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+  const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
 
   try {
     // Step 1: Get episodes
@@ -560,7 +560,7 @@ getStreamUrl(21, 1);
 
 ```javascript
 async function fetchAllSearchResults(keyword, maxPages = 5) {
-  const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+  const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
   const allResults = [];
 
   for (let page = 1; page <= maxPages; page++) {
@@ -605,7 +605,7 @@ fetchAllSearchResults('naruto', 3);
 
 ```javascript
 async function safeFetch(endpoint, params = {}) {
-  const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+  const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
   const url = new URL(`${BASE}${endpoint}`);
 
   Object.entries(params).forEach(([key, value]) => {
@@ -658,7 +658,7 @@ async function getSearchSuggestions(keyword) {
   if (!keyword || keyword.length < 2) return [];
 
   const res = await fetch(
-    `https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=${encodeURIComponent(keyword)}`
+    `https://anikotoapi-clone.stacknt.workers.dev/api/suggestions?keyword=${encodeURIComponent(keyword)}`
   );
   const data = await res.json();
 
@@ -694,8 +694,8 @@ document.getElementById('search-input')?.addEventListener('input', (e) => {
 ```javascript
 async function displayTrending() {
   const [trendingRes, topTenRes] = await Promise.all([
-    fetch('https://peachstreamanikototvapi.vercel.app/api/trending'),
-    fetch('https://peachstreamanikototvapi.vercel.app/api/top-ten')
+    fetch('https://anikotoapi-clone.stacknt.workers.dev/api/trending'),
+    fetch('https://anikotoapi-clone.stacknt.workers.dev/api/top-ten')
   ]);
 
   const trending = await trendingRes.json();
@@ -735,7 +735,7 @@ displayTrending();
 ```python
 import requests
 
-BASE = "https://peachstreamanikototvapi.vercel.app/api"
+BASE = "https://anikotoapi-clone.stacknt.workers.dev/api"
 
 def search_anime(keyword, page=1):
     """Search for anime by keyword."""
@@ -769,7 +769,7 @@ results = search_anime("naruto")
 ```python
 import requests
 
-BASE = "https://peachstreamanikototvapi.vercel.app/api"
+BASE = "https://anikotoapi-clone.stacknt.workers.dev/api"
 
 def get_anime_info(slug):
     """Get full anime information by slug."""
@@ -801,7 +801,7 @@ info = get_anime_info("naruto-shippuuden-movie-6-road-to-ninja-w2wqq")
 ```python
 import requests
 
-BASE = "https://peachstreamanikototvapi.vercel.app/api"
+BASE = "https://anikotoapi-clone.stacknt.workers.dev/api"
 
 def get_stream_url(anime_id, episode_number=1):
     """Complete streaming workflow: episodes → servers → stream → resolve."""
@@ -863,7 +863,7 @@ stream = get_stream_url(21, 1)
 import requests
 import time
 
-BASE = "https://peachstreamanikototvapi.vercel.app/api"
+BASE = "https://anikotoapi-clone.stacknt.workers.dev/api"
 
 def filter_anime(genre=None, anime_type=None, status=None, sort=None, max_pages=3):
     """Filter anime with multiple parameters and pagination."""
@@ -920,7 +920,7 @@ import requests
 import json
 import time
 
-BASE = "https://peachstreamanikototvapi.vercel.app/api"
+BASE = "https://anikotoapi-clone.stacknt.workers.dev/api"
 
 def batch_fetch_anime_info(slugs, delay=0.5):
     """Fetch info for multiple anime with rate limiting."""
@@ -975,7 +975,7 @@ print(f"\nSaved {len(anime_list)} anime to anime_batch.json")
 ```python
 import requests
 
-BASE = "https://peachstreamanikototvapi.vercel.app/api"
+BASE = "https://anikotoapi-clone.stacknt.workers.dev/api"
 
 def discover_random(count=5):
     """Discover random anime for recommendations."""
@@ -1009,7 +1009,7 @@ discover_random()
 ```javascript
 const axios = require('axios');
 
-const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
 
 async function getStreamUrl(animeId, episodeNumber = 1) {
   // Step 1: Get episodes
@@ -1072,7 +1072,7 @@ getStreamUrl(21, 1)
 ```javascript
 const axios = require('axios');
 
-const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
 
 async function fetchMultipleEndpoints() {
   // Fetch multiple endpoints concurrently
@@ -1127,7 +1127,7 @@ fetchMultipleEndpoints().catch(console.error);
 ```javascript
 const axios = require('axios');
 
-const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
 
 async function fetchWithRetry(url, params = {}, retries = 3, delay = 1000) {
   for (let attempt = 1; attempt <= retries; attempt++) {
@@ -1183,7 +1183,7 @@ main();
 const axios = require('axios');
 
 async function getEpisodeList(animeId) {
-  const { data } = await axios.get(`https://peachstreamanikototvapi.vercel.app/api/episodes/${animeId}`);
+  const { data } = await axios.get(`https://anikotoapi-clone.stacknt.workers.dev/api/episodes/${animeId}`);
 
   const { animeId: id, totalEpisodes, episodes } = data.results;
 
@@ -1209,7 +1209,7 @@ getEpisodeList(21);
 const axios = require('axios');
 
 async function getSuggestions(keyword) {
-  const { data } = await axios.get('https://peachstreamanikototvapi.vercel.app/api/suggestions', {
+  const { data } = await axios.get('https://anikotoapi-clone.stacknt.workers.dev/api/suggestions', {
     params: { keyword }
   });
 
@@ -1274,7 +1274,7 @@ getSuggestions('naruto').then(suggestions => {
   </div>
 
   <script>
-    const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+    const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
     const video = document.getElementById('video');
     const statusEl = document.getElementById('status');
     const qualitySelect = document.getElementById('quality-select');
@@ -1402,7 +1402,7 @@ getSuggestions('naruto').then(suggestions => {
   <video id="player" controls crossorigin playsinline></video>
 
   <script>
-    const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+    const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
     const video = document.getElementById('player');
 
     async function initPlyr(animeId, episode) {
@@ -1485,7 +1485,7 @@ getSuggestions('naruto').then(suggestions => {
   </video>
 
   <script>
-    const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+    const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
 
     async function initVideoJS(animeId, episode) {
       try {
@@ -1595,7 +1595,7 @@ getSuggestions('naruto').then(suggestions => {
   </div>
 
   <script>
-    const BASE = 'https://peachstreamanikototvapi.vercel.app/api';
+    const BASE = 'https://anikotoapi-clone.stacknt.workers.dev/api';
     const video = document.getElementById('video');
     const serverSelect = document.getElementById('server-select');
     const qualitySelect = document.getElementById('quality-select');
@@ -1737,7 +1737,7 @@ getSuggestions('naruto').then(suggestions => {
 ### Search "naruto" — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/search?keyword=naruto" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/search?keyword=naruto" | python3 -m json.tool
 ```
 
 ```json
@@ -1795,7 +1795,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/search?keyword=naruto" |
 ### Episodes for animeId 21 — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/21" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/episodes/21" | python3 -m json.tool
 ```
 
 ```json
@@ -1840,7 +1840,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/episodes/21" | python3 -
 ### Servers — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=dXNCT3hNQzk3THhSTW8ySnM5UmM9PQ" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/servers?ids=dXNCT3hNQzk3THhSTW8ySnM5UmM9PQ" | python3 -m json.tool
 ```
 
 ```json
@@ -1882,7 +1882,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/servers?ids=dXNCT3hNQzk3
 ### Stream URL — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZrOWdjeldjOERLaWNMMXFNbVB3WUJqOHZGS2FSWVgvbVJraVpIV1dQRjRoN01hOFUvYmxsWXFYNGtiR0h5OWdGQWc9PQ" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream?id=MTF1dkFtaW9BRTZPbzJJRElFZUZrOWdjeldjOERLaWNMMXFNbVB3WUJqOHZGS2FSWVgvbVJraVpIV1dQRjRoN01hOFUvYmxsWXFYNGtiR0h5OWdGQWc9PQ" | python3 -m json.tool
 ```
 
 ```json
@@ -1906,7 +1906,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream?id=MTF1dkFtaW9BRT
 ### Stream Resolve — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZrOWdjeldjOERLaWNMMXFNbVB3WUJqOHZGS2FSWVgvbVJraVpIV1dQRjRoN01hOFUvYmxsWXFYNGtiR0h5OWdGQWc9PQ" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/stream/resolve?id=MTF1dkFtaW9BRTZPbzJJRElFZUZrOWdjeldjOERLaWNMMXFNbVB3WUJqOHZGS2FSWVgvbVJraVpIV1dQRjRoN01hOFUvYmxsWXFYNGtiR0h5OWdGQWc9PQ" | python3 -m json.tool
 ```
 
 ```json
@@ -1928,7 +1928,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/stream/resolve?id=MTF1dk
 ### Random Anime — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/random" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/random" | python3 -m json.tool
 ```
 
 ```json
@@ -1954,7 +1954,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/random" | python3 -m jso
 ### Search Suggestions — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=naruto" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/suggestions?keyword=naruto" | python3 -m json.tool
 ```
 
 ```json
@@ -1997,7 +1997,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/suggestions?keyword=naru
 ### Top 10 — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/top-ten" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/top-ten" | python3 -m json.tool
 ```
 
 ```json
@@ -2028,7 +2028,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/top-ten" | python3 -m js
 ### Health Check — Full Response
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/health" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/health" | python3 -m json.tool
 ```
 
 ```json
@@ -2054,7 +2054,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/health" | python3 -m jso
 ### Genre Filter — Action Anime
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/genre/action?page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/genre/action?page=1" | python3 -m json.tool
 ```
 
 ```json
@@ -2091,7 +2091,7 @@ curl -s "https://peachstreamanikototvapi.vercel.app/api/genre/action?page=1" | p
 ### Advanced Filter — Action TV Currently Airing
 
 ```bash
-curl -s "https://peachstreamanikototvapi.vercel.app/api/filter?keyword=&genre=action&type=tv&status=currently-airing&sort=score&page=1" | python3 -m json.tool
+curl -s "https://anikotoapi-clone.stacknt.workers.dev/api/filter?keyword=&genre=action&type=tv&status=currently-airing&sort=score&page=1" | python3 -m json.tool
 ```
 
 ---
@@ -2202,7 +2202,7 @@ const preferred = servers.find(s => s.name === 'HD-1' && s.type === 'sub')
 ```javascript
 // Always use the proxy for browser playback
 const rawUrl = 'https://example.com/playlist.m3u8';
-const proxiedUrl = `https://peachstreamanikototvapi.vercel.app/api/stream/proxy?url=${encodeURIComponent(rawUrl)}`;
+const proxiedUrl = `https://anikotoapi-clone.stacknt.workers.dev/api/stream/proxy?url=${encodeURIComponent(rawUrl)}`;
 
 // Use with HLS.js
 hls.loadSource(proxiedUrl);

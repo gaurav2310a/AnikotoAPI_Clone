@@ -94,7 +94,7 @@ AniKotoAPI/
 
 #### Example of request
 \`\`\`bash
-curl "https://peachstreamanikototvapi.vercel.app/api/endpoint"
+curl "https://anikotoapi-clone.stacknt.workers.dev/api/endpoint"
 \`\`\`
 
 #### Sample Response
