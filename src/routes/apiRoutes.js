@@ -15,9 +15,8 @@
  * @license MIT
  * ======= • ======= • ======= • ======= • =======• =======
  */
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const { version } = require("../../package.json");
+import packageJson from "../../package.json" with { type: "json" };
+const { version } = packageJson;
 
 
 import { getHomeInfo } from "../controllers/homeInfo.controller.js";
