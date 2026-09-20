@@ -16,7 +16,6 @@
 
 import dotenv from "dotenv";
 import express from "express";
-import compression from "compression";
 import crypto from "crypto";
 import { httpServerHandler } from "cloudflare:node";
 import { createApiRoutes } from "./src/routes/apiRoutes.js";
@@ -32,15 +31,9 @@ const app = express();
 const PORT = Number(process.env.PORT) || 4444;
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",");
 
-// ---- FEATURE: Response compression ----
-app.use(compression({
-  filter: (req, res) => {
-    if (req.headers["x-no-compression"]) return false;
-    return compression.filter(req, res);
-  },
-  level: 6,
-  threshold: 1024
-}));
+// Cloudflare Workers handles response compression at the edge.
+// Do not use Express compression here because API clients should receive
+// normal JSON/text responses rather than raw compressed bytes.
 
 // ---- FEATURE: Request body size limits ----
 app.use(express.json({ limit: "10kb" }));
