@@ -9,7 +9,8 @@
     "test": "node test.js",
     "cf:dev": "wrangler dev",
     "cf:deploy": "wrangler deploy",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "postinstall": "node scripts/patch-cloudflare-deps.mjs"
   },
   "author": "Sʜɪɴᴇɪ Nᴏᴜᴢᴇɴ",
   "license": "MIT",
