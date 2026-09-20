@@ -6,10 +6,8 @@
  * @description
  *   Main entry point for the AniKotoAPI Express server.
  *   Configures CORS, middleware, static files, API routes,
- *   and 404 handling. Starts the server on the configured port.
- *
- * @exports
- *   None (side-effect: starts Express server)
+ *   and 404 handling. Exposes the Express server through the
+ *   Cloudflare Workers HTTP server adapter.
  *
  * @author  Gaurav
  * @license MIT
@@ -24,6 +22,7 @@ import fs from "fs";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import { httpServerHandler } from "cloudflare:node";
 import { createApiRoutes } from "./src/routes/apiRoutes.js";
 import { addCreatorInfo } from "./src/middleware/creatorInfo.js";
 
@@ -34,7 +33,7 @@ dotenv.config();
 // ══════════════════════════════════════════════════════════════
 
 const app = express();
-const PORT = process.env.PORT || 4444;
+const PORT = Number(process.env.PORT) || 4444;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const publicDir = path.join(process.cwd(), "public");
