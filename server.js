@@ -17,11 +17,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import compression from "compression";
-import path from "path";
-import fs from "fs";
 import crypto from "crypto";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 import { httpServerHandler } from "cloudflare:node";
 import { createApiRoutes } from "./src/routes/apiRoutes.js";
 import { addCreatorInfo } from "./src/middleware/creatorInfo.js";
@@ -34,9 +30,6 @@ dotenv.config();
 
 const app = express();
 const PORT = Number(process.env.PORT) || 4444;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const publicDir = path.join(process.cwd(), "public");
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",");
 
 // ---- FEATURE: Response compression ----
@@ -93,26 +86,6 @@ app.use((req, res, next) => {
   res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
   res.setHeader("X-Permitted-Cross-Domain-Policies", "none");
   next();
-});
-
-// ══════════════════════════════════════════════════════════════
-// STATIC FILES
-// ══════════════════════════════════════════════════════════════
-
-// NOTE: redirect: false prevents automatic redirects to index.html
-app.use(express.static(publicDir, { redirect: false }));
-
-// ══════════════════════════════════════════════════════════════
-// CLEAN URL ROUTES
-// ══════════════════════════════════════════════════════════════
-
-// Serve HTML files without .html extension
-app.get("/tos", (req, res) => {
-  res.sendFile(path.join(publicDir, "tos.html"));
-});
-
-app.get("/privacy", (req, res) => {
-  res.sendFile(path.join(publicDir, "privacy.html"));
 });
 
 // ══════════════════════════════════════════════════════════════
@@ -219,29 +192,24 @@ app.use((err, req, res, next) => {
 
 // ---- FEATURE: Catch-all 404 handler for undefined routes ----
 app.use((req, res) => {
-  const filePath = path.join(publicDir, "404.html");
-  if (fs.existsSync(filePath)) {
-    res.status(404).sendFile(filePath);
-  } else {
-    res.status(404).json({
-      success: false,
-      message: "Endpoint not found",
-      availableEndpoints: [
-        "/", "/search", "/search/suggest", "/info", "/watch",
-        "/episodes/:id", "/episodes-ajax/:id", "/stream", "/servers",
-        "/mapper-servers", "/download", "/stream/resolve",
-        "/stream/qualities", "/stream/proxy", "/stream/ts-proxy",
-        "/spotlight", "/trending", "/top-ten", "/suggestions",
-        "/random", "/most-popular", "/upcoming", "/top-rankings",
-        "/recently-updated", "/completed", "/new-release",
-        "/newly-added", "/latest-updated", "/trending-sidebar",
-        "/seasons/:id", "/watch-order/:id", "/az-list/:letter",
-        "/filter", "/genre/:genre", "/type/:type", "/status/:status",
-        "/schedule", "/health", "/stats", "/cache/stats",
-        "/mirrors", "/openapi"
-      ]
-    });
-  }
+  res.status(404).json({
+    success: false,
+    message: "Endpoint not found",
+    availableEndpoints: [
+      "/api/", "/api/search", "/api/search/suggest", "/api/info", "/api/watch",
+      "/api/episodes/:id", "/api/episodes-ajax/:id", "/api/stream", "/api/servers",
+      "/api/mapper-servers", "/api/download", "/api/stream/resolve",
+      "/api/stream/qualities", "/api/stream/proxy", "/api/stream/ts-proxy",
+      "/api/spotlight", "/api/trending", "/api/top-ten", "/api/suggestions",
+      "/api/random", "/api/most-popular", "/api/upcoming", "/api/top-rankings",
+      "/api/recently-updated", "/api/completed", "/api/new-release",
+      "/api/newly-added", "/api/latest-updated", "/api/trending-sidebar",
+      "/api/seasons/:id", "/api/watch-order/:id", "/api/az-list/:letter",
+      "/api/filter", "/api/genre/:genre", "/api/type/:type", "/api/status/:status",
+      "/api/schedule", "/api/health", "/api/stats", "/api/cache/stats",
+      "/api/mirrors", "/api/openapi", "/api/proxy/status"
+    ]
+  });
 });
 
 // ══════════════════════════════════════════════════════════════
@@ -252,33 +220,6 @@ const server = app.listen(PORT, () => {
   console.info(`AniKotoAPI listening at ${PORT}`);
 });
 
-// ══════════════════════════════════════════════════════════════
-// GRACEFUL SHUTDOWN
-// ══════════════════════════════════════════════════════════════
-
-// ---- FEATURE: Graceful shutdown handling ----
-const gracefulShutdown = (signal) => {
-  console.info(`\n[SHUTDOWN] Received ${signal}. Starting graceful shutdown...`);
-  server.close(() => {
-    console.info("[SHUTDOWN] Server closed. Goodbye.");
-    process.exit(0);
-  });
-  setTimeout(() => {
-    console.error("[SHUTDOWN] Forced shutdown after timeout.");
-    process.exit(1);
-  }, 10000);
-};
-
-process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
-process.on("SIGINT", () => gracefulShutdown("SIGINT"));
-
-process.on("unhandledRejection", (reason, promise) => {
-  console.error("[UNHANDLED] Unhandled Rejection:", reason);
-});
-
-process.on("uncaughtException", (error) => {
-  console.error("[UNCAUGHT] Uncaught Exception:", error);
-  gracefulShutdown("uncaughtException");
-});
-
-// ══════════════════════════════════════════════════════════════ END: server.js
+// Cloudflare Workers adapter. The port is a routing key inside Workers,
+// not a public network port.
+export default httpServerHandler({ port: PORT });
